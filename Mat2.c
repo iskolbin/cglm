@@ -2,6 +2,7 @@
 #include <math.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 
 Mat2d *Mat2d_create( void ) {
 	return (Mat2d *) malloc( 6 * sizeof float );
