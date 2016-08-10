@@ -1,3 +1,3 @@
 default:
-	gcc main.c -o test -I../inc
-	./test
+	gcc test_Mat2.c -o test_Mat2 -I../inc -lm
+	./test_Mat2
