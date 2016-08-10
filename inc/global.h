@@ -18,12 +18,12 @@
 #define CGLM_DEFAULT_EPSILON 0.00001
 #endif
 
-typedef CGLM_TYPE[2]  Vec2;
-typedef CGLM_TYPE[3]  Vec3;
-typedef CGLM_TYPE[4]  Vec4;
-typedef CGLM_TYPE[4]  Mat2;
-typedef CGLM_TYPE[6]  Mat2d;
-typedef CGLM_TYPE[9]  Mat3;
-typedef CGLM_TYPE[16] Mat4;
+typedef CGLM_TYPE *Vec2;
+typedef CGLM_TYPE *Vec3;
+typedef CGLM_TYPE *Vec4;
+typedef CGLM_TYPE *Mat2;
+typedef CGLM_TYPE *Mat2d;
+typedef CGLM_TYPE *Mat3;
+typedef CGLM_TYPE *Mat4;
 
 #endif

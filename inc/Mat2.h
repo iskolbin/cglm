@@ -4,25 +4,19 @@
 #include "global.h"
 
 #ifndef CGLM_DEFAULT_MAT2_FORMAT
-#define CGLM_DEFAULT_MAT2_FORMAT "Mat2(%g,%g,%g,%g)"
+#define CGLM_DEFAULT_MAT2_FORMAT "Mat2(%g,%g,%g,%g)\n"
 #endif
 
 #define Mat2_alloc() CGLM_ALLOC(4)
 
 #define Mat2_copy(dest,src) Mat2_set((dest),(src)[0],(src)[1],(src)[2],(src)[3])
 
-#define Mat2_set(dest,a,b,c,d) do{CGLM_TYPE a0=(a),a1=(b),a2=(c),a3=(d); (dest)[0]=a0;(dest)[1]=a1;(dest)[2]=a2;(dest)[3]=a3;}while(0)
+#define Mat2_set(dest,a,b,c,d) do{CGLM_TYPE a0=(a),a1=(b),a2=(c),a3=(d);(dest)[0]=a0;(dest)[1]=a1;(dest)[2]=a2;(dest)[3]=a3;}while(0)
 #define Mat2_setrotsc(dest,s,c) Mat2_set((dest),(c),(s),-(s),(c))
 #define Mat2_setrot(dest,rad) Mat2_setrotsc((dest),sin(rad),cos(rad))
 #define Mat2_setscl(dest,sclx,scly) Mat2_set((dest),(sclx),0,0,(scly))
 #define Mat2_setsclv2(dest,v2) Mat2_setscl((dest),(v2)[0],(v2)[1])
 #define Mat2_identity(dest) Mat2_set((dest),1,0,0,1)
-
-#define Mat2_fromvalues(a,b,c,d) Mat2_set(Mat2_alloc(),(a),(b),(c),(d))
-#define Mat2_fromrotsc(s,c) Mat2_setrotsc(Mat2_alloc(),(s),(c))
-#define Mat2_fromrot(rad) Mat2_setrot(Mat2_alloc(),(rad))
-#define Mat2_fromscl(sclx,scly) Mat2_setscl(Mat2_alloc(),(sclx),(scly))
-#define Mat2_fromsclv2(v2) Mat2_setsclv2(Mat2_alloc(),(v2))
 
 #define Mat2_det(src) ((src)[0]*(src)[3] - (src)[2]*(src)[1])
 #define Mat2_frob(src) sqrt((src)[0]*(src)[0]+(src)[1]*(src)[1]+(src)[2]*(src)[2]+(src)[3]*(src)[3])
