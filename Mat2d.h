@@ -54,8 +54,5 @@ void   Mat2d_fprintf( FILE *fout, Mat2d *src, const char *format );
 #define Mat2d_exacteq(m1,m2) (\
 	(m1)[0]==(m2)[0] && (m1)[1]==(m2)[1] && (m1)[2]==(m2)[2] && \
 	(m1)[3]==(m2)[3] && (m1)[4]==(m2)[4] && (m1)[5]==(m2)[5])
-#define Mat2d_printf(src,format) ((Mat2d_fprintf(stdout,(src),(format))))
-#define Mat2d_fprint(fout,src) (Mat2d_fprintf((fout),(src),CGLM_MAT2D_FORMAT))
-#define Mat2d_print(src) (Mat2d_fprintf(stdout,(src),CGLM_MAT2D_FORMAT))
 
 #endif
