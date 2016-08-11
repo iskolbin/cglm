@@ -7,7 +7,7 @@
 #define CGLM_DEFAULT_MAT2_FORMAT "Mat2(%g,%g,%g,%g)\n"
 #endif
 
-#define Mat2_alloc() CGLM_ALLOC(4)
+#define Mat2_alloc() CGLM_ALLOC(4*sizeof(CGLM_TYPE))
 
 #define Mat2_copy(dest,src) Mat2_set((dest),(src)[0],(src)[1],(src)[2],(src)[3])
 
@@ -26,6 +26,11 @@
 #define Mat2_mul(dest,m1,m2) Mat2_set((dest),(m1)[0]*(m2)[0]+(m1)[2]*(m2)[1],(m1)[1]*(m2)[0]+(m1)[3]*(m2)[1],(m1)[0]*(m2)[2]+(m1)[2]*(m2)[3],(m1)[1]*(m2)[2]+(m1)[3]*(m2)[3])
 #define Mat2_mulk(dest,src,k) Mat2_unsafeset((dest),(src)[0]*(k),(src)[1]*(k),(src)[2]*(k),(src)[3]*(k))
 #define Mat2_addmulk(dest,m1,m2,k) Mat2_unsafeset((dest),(m1)[0]+((m2)[0]*(k)),(m1)[1]+((m2)[1]*(k)),(m1)[2]+((m2)[2]*(k)),(m1)[3]+((m2)[3]*(k)))
+
+#define Mat2_rotsc(dest,src,s,c) Mat2_set((dest), (src)[0]*(c)+(src)[2]*(s), (src)[1]*(c)+(src)[3]*(s), (src)[0]*(-(s))+(src)[2]*(c), (src)[1]*(-(s))+(src)[3]*(c))
+#define Mat2_rot(dest,src,rad) Mat2_rotsc((dest),(src),sin(rad),cos(rad))
+#define Mat2_scl(dest,src,sclx,scly) Mat2_set((dest), (src)[0]*(sclx), (src)[1]*(sclx), (src)[2]*(scly), (src)[3]*(scly))
+#define Mat2_sclv2(dest,src,v2) Mat2_scl((dest),(src),(v2)[0],(v2)[1])
 
 #define Mat2_transpose(dest,src) Mat2_set((dest),(src)[0],(src)[2],(src)[1],(src)[3])
 #define Mat2_adjoint(dest,src) Mat2_set((dest),(src)[3],-(src)[1],-(src)[2],(src)[0])

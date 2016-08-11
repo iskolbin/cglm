@@ -18,10 +18,11 @@ build = {
 	modules = {
 		cglm = {
 			sources = {
-				'./lua/lua_Mat2.c',
+				'./lua/lua_cglm.c',
 			},
 			incdirs = {
 				'./inc',
+				'./lua',
 			}
 		}
 	}
