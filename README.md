@@ -1,7 +1,7 @@
 CGLM
 ====
 
-C-macros GL vector-matrix library.
+C-macros GL vector-matrix library. Greatly inspired by [gl-matrix](https://github.com/toji/gl-matrix).
 
 Vec2
 ----
