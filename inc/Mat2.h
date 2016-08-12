@@ -30,6 +30,8 @@
 #define Mat2_rotrad(dest,src,rad) Mat2_rot((dest),(src),sin(rad),cos(rad))
 #define Mat2_scl(dest,src,sclx,scly) Mat2_set((dest), (src)[0]*(sclx), (src)[1]*(sclx), (src)[2]*(scly), (src)[3]*(scly))
 #define Mat2_sclv2(dest,src,scl) Mat2_scl((dest),(src),(scl)[0],(scl)[1])
+#define Mat2_sclx(dest,src,scl) Mat2_scl((dest),(src),(scl),1)
+#define Mat2_scly(dest,src,scl) Mat2_scl((dest),(src),1,(scl))
 
 #define Mat2_transpose(dest,src) Mat2_set((dest),(src)[0],(src)[2],(src)[1],(src)[3])
 #define Mat2_adjoint(dest,src) Mat2_set((dest),(src)[3],-(src)[1],-(src)[2],(src)[0])

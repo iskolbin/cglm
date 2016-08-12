@@ -59,16 +59,16 @@
 		(a)[3]+((b)[3]*(k)),(a)[4]+((b)[4]*(k)),(a)[5]+((b)[5]*(k)), \
 		(a)[6]+((b)[6]*(k)),(a)[7]+((b)[7]*(k)),(a)[8]+((b)[8]*(k)))
 
-#define Mat3_rotxyz(dest,a,sx,cx,sy,cy,sz,cz) //TODO
-#define Mat3_rotxy(dest,a,sx,cx,sy,cy) Mat3_rotxyz((dest),(a),(sx),(cx),(sy),(cy),0,1)
-#define Mat3_rotxz(dest,a,sx,cx,sz,cz) Mat3_rotxyz((dest),(a),(sx),(cx),0,1,(sz),(cz))
-#define Mat3_rotyz(dest,a,sy,cy,sz,yz) Mat3_rotxyz((dest),(a),0,1,(sy),(cy),(sz),(cz))
-#define Mat3_rotx(dest,a,s,c) Mat3_rotxyz((dest),(a),(s),(c),0,1,0,1)
-#define Mat3_roty(dest,a,s,c) Mat3_rotxyz((dest),(a),0,1,(s),(c),0,1)
-#define Mat3_rotz(dest,a,s,c) Mat3_rotxyz((dest),(a),0,1,0,1,(s),(c))
-#define Mat3_rotxyzv6(dest,a,rot) Mat3_rotxyz((dest),(a),(rot)[0],(rot)[1],(rot)[2],(rot)[3],(rot)[4],(rot)[5])
-#define Mat3_rotxyzv2(dest,a,rotxy,rotxz,rotyz) Mat3_rotxyz((dest),(a),(rotxy)[0],(rotxy)[1],(rotxz)[0],(rotxz)[1],(rotyz)[0],(rotyz)[1])
-#define Mat3_rotxyzrad(dest,radx,rady,radz) Mat3_rotxyz((dest),(a),sin(radx),cos(radx),sin(rady),cos(rady),sin(radz),cos(radz))
+#define Mat3_rot(dest,a,sx,cx,sy,cy,sz,cz) //TODO
+#define Mat3_rotv6(dest,a,rot) Mat3_rot((dest),(a),(rot)[0],(rot)[1],(rot)[2],(rot)[3],(rot)[4],(rot)[5])
+#define Mat3_rotv2(dest,a,rotxy,rotxz,rotyz) Mat3_rot((dest),(a),(rotxy)[0],(rotxy)[1],(rotxz)[0],(rotxz)[1],(rotyz)[0],(rotyz)[1])
+#define Mat3_rotrad(dest,radx,rady,radz) Mat3_rot((dest),(a),sin(radx),cos(radx),sin(rady),cos(rady),sin(radz),cos(radz))
+#define Mat3_rotxy(dest,a,sx,cx,sy,cy) Mat3_rot((dest),(a),(sx),(cx),(sy),(cy),0,1)
+#define Mat3_rotxz(dest,a,sx,cx,sz,cz) Mat3_rot((dest),(a),(sx),(cx),0,1,(sz),(cz))
+#define Mat3_rotyz(dest,a,sy,cy,sz,yz) Mat3_rot((dest),(a),0,1,(sy),(cy),(sz),(cz))
+#define Mat3_rotx(dest,a,s,c) Mat3_rot((dest),(a),(s),(c),0,1,0,1)
+#define Mat3_roty(dest,a,s,c) Mat3_rot((dest),(a),0,1,(s),(c),0,1)
+#define Mat3_rotz(dest,a,s,c) Mat3_rot((dest),(a),0,1,0,1,(s),(c))
 #define Mat3_rotxyrad(dest,a,radx,rady) Mat3_rotxy((dest),(a),sin(radx),cos(radx),sin(rady),cos(rady))
 #define Mat3_rotxzrad(dest,a,radx,radz) Mat3_rotxz((dest),(a),sin(radx),cos(radx),sin(radz),cos(radz))
 #define Mat3_rotyzrad(dest,a,rady,radz) Mat3_rotyz((dest),(a),sin(rady),cos(rady),sin(radz),cos(radz))
@@ -82,24 +82,22 @@
 #define Mat3_rotyv2(dest,a,rot) Mat3_roty((dest),(a),(rot)[0],(rot)[1])
 #define Mat3_rotzv2(dest,a,rot) Mat3_rotz((dest),(a),(rot)[0],(rot)[1])
 
-#define Mat3_sclxyz(dest,a,sclx,scly,sclz) //TODO
-#define Mat3_sclxyzv3(dest,a,scl) (Mat3_sclxyz((dest),(a),(scl)[0],(scl)[1],(scl)[2]))
+#define Mat3_scl(dest,a,sclx,scly,sclz) //TODO
+#define Mat3_sclv3(dest,a,scl) (Mat3_scl((dest),(a),(scl)[0],(scl)[1],(scl)[2]))
 #define Mat3_sclxyv2(dest,a,scl) Mat3_sclxy((dest),(a),(scl)[0],(scl)[1])
 #define Mat3_sclxzv2(dest,a,scl) Mat3_sclxz((dest),(a),(scl)[0],(scl)[1])
 #define Mat3_sclyzv2(dest,a,scl) Mat3_sclyz((dest),(a),(scl)[0],(scl)[1])
-#define Mat3_sclxy(dest,a,sclx,scly) Mat3_sclxyz((dest),(a),(sclx),(scly),1)
-#define Mat3_sclxz(dest,a,sclx,sclz) Mat3_sclxyz((dest),(a),(sclx),1,(sclz))
-#define Mat3_sclyz(dest,a,scly,sclz) Mat3_sclxyz((dest),(a),1,(scly),(sclz))
-#define Mat3_sclx(dest,a,sclx) Mat3_sclxyz((dest),(a),(sclx),1,1)
-#define Mat3_scly(dest,a,scly) Mat3_sclxyz((dest),(a),1,(scly),1)
-#define Mat3_sclz(dest,a,sclz) Mat3_sclxyz((dest),(a),1,1,(sclz))
+#define Mat3_sclxy(dest,a,sclx,scly) Mat3_scl((dest),(a),(sclx),(scly),1)
+#define Mat3_sclxz(dest,a,sclx,sclz) Mat3_scl((dest),(a),(sclx),1,(sclz))
+#define Mat3_sclyz(dest,a,scly,sclz) Mat3_scl((dest),(a),1,(scly),(sclz))
+#define Mat3_sclx(dest,a,sclx) Mat3_scl((dest),(a),(sclx),1,1)
+#define Mat3_scly(dest,a,scly) Mat3_scl((dest),(a),1,(scly),1)
+#define Mat3_sclz(dest,a,sclz) Mat3_scl((dest),(a),1,1,(sclz))
 
-#define Mat3_transpose(dest,a) do{ \
-	CGLM_TYPE a01 = a[1], a02 = a[2], a12 = a[5]; \
-	(dest)[0]=(a)[0];(dest)[1]=(a)[3];(dest)[2]=(a)[6]; \
-	(dest)[3]=a01;   (dest)[4]=(a)[4];(dest)[5]=(a)[7]; \
-	(dest)[6]=(a)[2];(dest)[7]=a02;     (dest)[8]=a12;      \
-}while(0)
+#define Mat3_transpose(dest,a) Mat3_set((dest) \
+	(a)[0], (a)[3], (a)[6], \
+	(a)[1], (a)[4], (a)[7], \
+	(a)[2], (a)[2], (a)[5])
 
 // TODO
 //#define Mat2_adjoint(dest,src) Mat2_set((dest),(src)[3],-(src)[1],-(src)[2],(src)[0])
