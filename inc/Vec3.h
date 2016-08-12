@@ -3,11 +3,9 @@
 
 #include "global.h"
 
-#ifndef CGLM_DEFAULT_VEC3_FORMAT
-#define CGLM_DEFAULT_VEC3_FORMAT "Vec3(%g,%g)\n"
-#endif
-
 #define Vec3_alloc() CGLM_ALLOC(3*sizeof(CGLM_TYPE))
+#define Vec3_unpack(src) (src)[0],(src)[1],(src)[2]
+#define Vec3_print(src) printf("Vec3(%g %g %g)",(src)[0],(src)[1],(src)[2])
 
 #define Vec3_copy(dest,src) Vec3_set((dest),(src)[0],(src)[1],(src)[2])
 #define Vec3_set(dest,a,b,c) do{CGLM_TYPE a0=(a),a1=(b),a2=(c);(dest)[0]=a0;(dest)[1]=a1;(dest)[2]=a2;}while(0)
@@ -44,7 +42,5 @@
 #define Vec3_eq(v1,v2) Vec3_eqeps((v1),(v2),CGLM_DEFAULT_EPSILON)
 #define Vec3_eqexact(v1,v2) ((v1)[0]==(v2)[0]&&(v1)[1]==(v2)[1]&&(v1)[2]==(v2)[2])
 
-#define Vec3_unpack(src) (src)[0],(src)[1],(src)[2]
-#define Vec3_print(src) printf(CGLM_DEFAULT_VEC3_FORMAT,(src)[0],(src)[1],(src)[2])
 
 #endif

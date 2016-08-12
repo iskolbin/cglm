@@ -4,11 +4,9 @@
 #include "global.h"
 #include "Vec3.h"
 
-#ifndef CGLM_DEFAULT_VEC2_FORMAT
-#define CGLM_DEFAULT_VEC2_FORMAT "Vec2(%g,%g)\n"
-#endif
-
 #define Vec2_alloc() CGLM_ALLOC(2*sizeof(CGLM_TYPE))
+#define Vec2_unpack(src) (src)[0],(src)[1]
+#define Vec2_print(src) printf("Vec2(%g %g)\n",(src)[0],(src)[1])
 
 #define Vec2_copy(dest,src) Vec2_set((dest),(src)[0],(src)[1])
 #define Vec2_set(dest,a,b) do{CGLM_TYPE a0=(a),a1=(b);(dest)[0]=a0;(dest)[1]=a1;}while(0)
@@ -46,7 +44,5 @@
 #define Vec2_eq(v1,v2) Vec2_eqeps((v1),(v2),CGLM_DEFAULT_EPSILON)
 #define Vec2_eqexact(v1,v2) ((v1)[0]==(v2)[0]&&(v1)[1]==(v2)[1])
 
-#define Vec2_unpack(src) (src)[0],(src)[1]
-#define Vec2_print(src) printf(CGLM_DEFAULT_VEC2_FORMAT,(src)[0],(src)[1])
 
 #endif
