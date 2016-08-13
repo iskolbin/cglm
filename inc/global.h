@@ -32,7 +32,7 @@
 #endif
 
 #ifndef CGLM_UNIFORM
-#define CGLM_UNIFORM(a) ((a)*((float)rand()/(float)(RAND_MAX)))
+#define CGLM_UNIFORM(a) ((a)*((CGLM_TYPE)rand()/(CGLM_TYPE)(RAND_MAX)))
 #endif 
 
 #ifndef CGLM_MIN
@@ -46,6 +46,7 @@
 typedef CGLM_TYPE Vec2[2];
 typedef CGLM_TYPE Vec3[3];
 typedef CGLM_TYPE Vec4[4];
+typedef CGLM_TYPE Vec6[6];
 typedef CGLM_TYPE Mat2[4];
 typedef CGLM_TYPE Mat2d[6];
 typedef CGLM_TYPE Mat3[9];
